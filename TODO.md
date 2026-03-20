@@ -4,10 +4,10 @@
 - [x] Initialize Git repo
 - [x] Create .gitignore
 - [x] Initial commit
-- [ ] Create root package.json (npm init -y)
-- [ ] Install nodemon -D
-- [ ] Add scripts to package.json for git:save and watch:git
-- [ ] Commit root setup
+- [x] Create root package.json (npm init -y)
+- [x] Install nodemon -D
+- [x] Add scripts to package.json for git:save and watch:git
+- [x] Commit root setup
 - [ ] Run `npm run watch:git` for auto commits on changes
 
-Current status: Ready for root npm setup.
+Current status: Git linked and auto-update setup complete. Run the watcher next.
