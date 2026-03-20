@@ -220,7 +220,6 @@ export default function Dashboard() {
                   </div>
                   <p className="text-xs text-slate-500 text-center mt-1">15km remaining • Traffic: Normal</p>
                 </div>
-              </div>
             
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
               {/* Left: User Location to Sairam */}
