@@ -34,35 +34,35 @@ const locations = [
 const mockRoutes = [];
 const mockBuses = [];
 
-// Base Sairam College Coordinates
-const DEST_LAT = 12.9601;
-const DEST_LNG = 80.0558;
+// Base Sairam College Coordinates - now ORIGIN
+const SAIRAM_LAT = 12.9601;
+const SAIRAM_LNG = 80.0558;
 
 for (let i = 1; i <= 60; i++) {
   const loc = locations[i % locations.length];
   
-  // Adding slight variance so multiple buses from same town look unique
-  const startLat = loc.lat + (Math.random() * 0.02 - 0.01);
-  const startLng = loc.lng + (Math.random() * 0.02 - 0.01);
+  // Adding slight variance so multiple buses to same town look unique
+  const endLat = loc.lat + (Math.random() * 0.02 - 0.01);
+  const endLng = loc.lng + (Math.random() * 0.02 - 0.01);
   
-  const midLat = (startLat + DEST_LAT) / 2;
-  const midLng = (startLng + DEST_LNG) / 2;
+  const midLat = (SAIRAM_LAT + endLat) / 2;
+  const midLng = (SAIRAM_LNG + endLng) / 2;
 
   const route = {
     _id: `route_${i}`,
-    routeName: `${loc.name} (${loc.district}) to Sairam College`,
-    source: loc.name,
-    destination: 'Sairam Engineering College',
-    areasCovered: [loc.name, loc.district, 'Sairam Engineering College'],
+    routeName: `Sairam College to ${loc.name} (${loc.district})`,
+    source: 'Sairam Engineering College',
+    destination: loc.name,
+    areasCovered: ['Sairam Engineering College', loc.district, loc.name],
     pathCoordinates: [
-      { lat: startLat, lng: startLng },
+      { lat: SAIRAM_LAT, lng: SAIRAM_LNG },
       { lat: midLat, lng: midLng },
-      { lat: DEST_LAT, lng: DEST_LNG }
+      { lat: endLat, lng: endLng }
     ],
     stops: [
-      { stopName: `${loc.name} Junction`, eta: '07:00 AM', lat: startLat, lng: startLng },
+      { stopName: 'Sairam College Campus', eta: '07:00 AM', lat: SAIRAM_LAT, lng: SAIRAM_LNG },
       { stopName: 'Midway Halt', eta: '07:45 AM', lat: midLat, lng: midLng },
-      { stopName: 'Sairam College Campus', eta: '08:20 AM', lat: DEST_LAT, lng: DEST_LNG }
+      { stopName: `${loc.name} Junction`, eta: '08:20 AM', lat: endLat, lng: endLng }
     ]
   };
   mockRoutes.push(route);
@@ -76,7 +76,7 @@ for (let i = 1; i <= 60; i++) {
     driverName: `Driver ${i}`,
     driverContact: `+91 ${String(9000000000 + i).slice(0, 10)}`,
     capacity: 50,
-    currentLocation: isParked ? { lat: DEST_LAT, lng: DEST_LNG } : { lat: midLat, lng: midLng },
+    currentLocation: isParked ? { lat: SAIRAM_LAT, lng: SAIRAM_LNG } : { lat: midLat, lng: midLng },
     speed: isParked ? 0 : speed,
     parkingLocation: `Bay ${String.fromCharCode(65 + (i % 8))}${i % 10 || 1}`,
     routeId: route
