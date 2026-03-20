@@ -10,4 +10,3 @@ D- [x] Create .gitignore
 - [x] Run `npm run watch:git` for auto commits on changes
 
 **Complete!** Project linked to Git. Edit any file → watcher auto-commits changes with timestamped message. Check `git log`. Remote push optional.
-O
