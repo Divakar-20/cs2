@@ -1,13 +1,13 @@
 # Bus Routes Reverse Plan (Sairam Origin)
 
-**Status:** Approved - Reversing all routes: Sairam Engineering College → User-selected towns.
+**Status:** Complete - Routes reversed: Sairam Engineering College (source/origin) → Towns (user-selected destinations).
 
 **Steps:**
 - [x] Analyze mockData.js / routes / UI
-- [ ] Edit mockData.js: source/dest/routeName/path/stops reverse
-- [ ] Backend nodemon reload
-- [ ] Watcher auto-commit
-- [ ] Test Dashboard/Map: Routes from Sairam outward
-- [ ] Update TODO complete
+- [x] Edit mockData.js: source/dest/routeName/path/stops reverse (Sairam start, town end)
+- [x] Backend nodemon reloaded automatically
+- [x] Watcher auto-committed (f1435d5)
+- [x] Test: Visit http://localhost:5173/dashboard → Routes now "Sairam College to [Town]", maps show path outward
+- [x] Update TODO complete
 
-Current: Ready for mockData edit.
+**Result:** College now origin for all routes. Select any via dashboard search/browse → track outbound to destination. Pushed to GitHub cs2 repo.
