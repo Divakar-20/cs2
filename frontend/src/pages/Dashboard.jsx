@@ -196,6 +196,30 @@ export default function Dashboard() {
                 Parking Status <span className="ml-4 bg-amber-100 text-amber-800 px-4 py-1 rounded-full text-sm font-bold">Live Bay Occupancy</span>
               </h3>
             </div>
+            <div className="lg:col-span-1 bg-gradient-to-b from-amber-50 to-orange-50 p-6 rounded-2xl border border-amber-200 shadow-inner">
+                <h4 className="font-bold text-lg text-amber-800 mb-4 flex items-center">
+                  <MapPin className="w-5 h-5 mr-2" />
+                  Your Route to Sairam
+                </h4>
+                <div className="space-y-3">
+                  <div className="text-sm">
+                    <span className="font-bold text-slate-700">From:</span> 
+                    <span className="ml-2 bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs font-mono">{navigator.geolocation ? 'Loading GPS...' : 'Chennai (13.08,80.27)'}</span>
+                  </div>
+                  <div className="text-sm">
+                    <span className="font-bold text-slate-700">To:</span> 
+                    <span className="ml-2 bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full text-xs font-bold">Sairam College<br/>12.9601° N, 80.0558° E</span>
+                  </div>
+                  <div className="flex items-center justify-between bg-white p-3 rounded-xl shadow-sm border">
+                    <span className="text-sm font-bold text-slate-700">ETA:</span>
+                    <span className="bg-gradient-to-r from-emerald-500 to-emerald-600 text-white px-4 py-2 rounded-lg font-bold shadow-md">25 min</span>
+                  </div>
+                  <div className="w-full bg-slate-200 rounded-full h-2">
+                    <div className="bg-emerald-500 h-2 rounded-full" style={{width: '75%'}}></div>
+                  </div>
+                  <p className="text-xs text-slate-500 text-center mt-1">15km remaining • Traffic: Normal</p>
+                </div>
+              </div>
             
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
               {/* Left: User Location to Sairam */}
