@@ -187,6 +187,8 @@ export default function Dashboard() {
               />
             </form>
           </div>
+              </div>
+
 
           {/* Parking Bay Visualization - SVG Image */}
           <div className="bg-white/80 backdrop-blur-md rounded-3xl p-8 shadow-2xl border border-slate-200/60 mb-10 mx-auto max-w-7xl">
