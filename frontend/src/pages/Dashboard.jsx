@@ -173,7 +173,7 @@ export default function Dashboard() {
         <div className="flex-1 overflow-auto p-10 z-10 custom-scrollbar relative">
           
           {/* Real-time Glass Search Bar */}
-          <div className="bg-white/70 backdrop-blur-lg p-2 rounded-2xl shadow-sm mb-10 border border-white/60 flex items-center focus-within:shadow-md focus-within:ring-2 focus-within:ring-indigo-500/20 transition-all max-w-3xl mx-auto">
+          <div className="bg-white/70 backdrop-blur-lg p-2 rounded-2xl shadow-sm mb-6 border border-white/60 flex items-center focus-within:shadow-md focus-within:ring-2 focus-within:ring-indigo-500/20 transition-all max-w-3xl mx-auto">
             <div className="bg-indigo-50 p-3 rounded-xl ml-1">
               <Search className="w-6 h-6 text-indigo-600" />
             </div>
@@ -186,6 +186,39 @@ export default function Dashboard() {
                 onChange={handleSearchChange}
               />
             </form>
+          </div>
+
+          {/* Parking Bay Visualization - SVG Image */}
+          <div className="bg-white/80 backdrop-blur-md rounded-3xl p-8 shadow-2xl border border-slate-200/60 mb-10 mx-auto max-w-6xl">
+            <div className="flex items-center mb-8">
+              <div className="w-3 h-3 bg-amber-500 rounded-full mr-3 animate-pulse"></div>
+              <h3 className="text-2xl font-black text-slate-800 tracking-tight flex items-center">
+                Parking Status <span className="ml-4 bg-amber-100 text-amber-800 px-4 py-1 rounded-full text-sm font-bold">Live Bay Occupancy</span>
+              </h3>
+            </div>
+            
+            <div className="grid grid-cols-8 gap-4 max-w-6xl mx-auto">
+              {buses.filter(bus => bus.speed === 0).map((bus, idx) => (
+                <div key={bus._id} className="group relative" title={`Bay ${bus.parkingLocation}: ${bus.busNumber}`}>
+                  <svg viewBox="0 0 120 80" className="w-24 h-20 shadow-lg transform group-hover:scale-105 transition-all duration-300 cursor-pointer" onClick={() => navigate(`/map/${bus._id}`)}>
+                    {/* Parking bay */}
+                    <rect x="10" y="10" width="100" height="60" rx="8" fill="#f8fafc" stroke="#e2e8f0" strokeWidth="3"/>
+                    {/* Bus body */}
+                    <rect x="15" y="20" width="90" height="35" rx="4" fill="#3b82f6" stroke="#1d4ed8" strokeWidth="2"/>
+                    {/* Bus windows */}
+                    <rect x="25" y="25" width="12" height="8" rx="2" fill="#e0f2fe" stroke="#0284c7" strokeWidth="1"/>
+                    <rect x="42" y="25" width="12" height="8" rx="2" fill="#e0f2fe" stroke="#0284c7" strokeWidth="1"/>
+                    <rect x="59" y="25" width="12" height="8" rx="2" fill="#e0f2fe" stroke="#0284c7" strokeWidth="1"/>
+                    <rect x="76" y="25" width="12" height="8" rx="2" fill="#e0f2fe" stroke="#0284c7" strokeWidth="1"/>
+                    {/* Bus number */}
+                    <text x="60" y="48" textAnchor="middle" fontSize="10" fontWeight="bold" fill="white" className="drop-shadow-md">{bus.busNumber.slice(-4)}</text>
+                  </svg>
+                  <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 bg-slate-900 text-white px-3 py-1 rounded-lg text-xs font-bold whitespace-nowrap shadow-2xl opacity-0 group-hover:opacity-100 transition-opacity">
+                    Bay {bus.parkingLocation}
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
 
           <div className="flex items-center justify-between mb-6 border-b border-slate-200 pb-2">
